@@ -16,7 +16,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { submitRsvp, type RsvpFormData } from "@/app/(rsvp)/actions";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { SubTitle } from "../ui/title";
 import { Loader2 } from "lucide-react";
 import { isRsvpExpired } from "@/lib/invitationUtils";
@@ -37,13 +37,14 @@ export function RsvpForm({ guestData }: RsvpFormProps) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [submitted, setSubmitted] = useState(guestData.confirmation);
-  const [currentRsvpStatus, setCurrentRsvpStatus] = useState<'confirm' | 'decline' | null>(
-    guestData.confirmation ? 'confirm' : null // Assuming confirmation implies 'confirm'
-  );
-
+  const [currentRsvpStatus, setCurrentRsvpStatus] = useState<'confirm' | 'decline' | null>(null);
 
   const formExpired = isRsvpExpired(guestData.expirationDate);
   const formDisabled = submitted || (formExpired && !guestData.confirmation);
+
+  useEffect(() => {
+    setCurrentRsvpStatus(guestData.confirmation ? 'confirm' : null);
+  }, [guestData.confirmation]);
 
   const form = useForm<RsvpFormValues>({
     resolver: zodResolver(RsvpFormSchema),
@@ -67,7 +68,6 @@ export function RsvpForm({ guestData }: RsvpFormProps) {
         });
         setSubmitted(true);
         setCurrentRsvpStatus(data.attendance);
-        // Potentially update guestData.confirmation if you re-fetch or manage state higher up
       } else {
         toast({
           title: "Error",
@@ -87,7 +87,6 @@ export function RsvpForm({ guestData }: RsvpFormProps) {
     statusMessage = "La fecha límite para confirmar ha pasado. Por favor, contacte directamente con la pareja.";
   }
 
-
   return (
     <section id="rsvp-form" className="my-12 animate-fadeIn animate-fadeIn-delay-3 py-10 bg-card/50 backdrop-blur-sm rounded-lg shadow-lg px-4 md:px-8">
       <SubTitle as="h2" className="text-center mb-8 !text-4xl">Por Favor Responda</SubTitle>
@@ -101,7 +100,6 @@ export function RsvpForm({ guestData }: RsvpFormProps) {
            Por favor, háganoslo saber si puede asistir antes del {new Date(guestData.expirationDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}.
          </p>
       )}
-
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
