@@ -16,29 +16,30 @@ const DetailItem = ({ icon, label, value }: { icon: React.ReactNode, label: stri
 export function WeddingInfo() {
   return (
     <section className="mb-12 animate-fadeIn animate-fadeIn-delay-1">
-      <SubTitle as="h2" className="text-center mb-8 !text-4xl">Event Details</SubTitle>
+      <SubTitle as="h2" className="text-center mb-8 !text-4xl">Detalles del Evento</SubTitle>
       <Card className="bg-card/70 backdrop-blur-sm shadow-lg overflow-hidden">
         <div className="md:flex">
           <div className="md:w-1/2">
-            <Image 
-              src="https://placehold.co/600x400.png" 
-              alt="Club Gema" 
-              width={600} 
-              height={400} 
-              className="object-cover w-full h-full"
-              data-ai-hint="romantic wedding venue" 
-            />
+            <div className="flex items-center justify-center h-full p-4 md:p-8">
+              <Image
+                src="/novios.svg"
+                alt="Wedding Couple Icon"
+                width={300}
+                height={300}
+                className="w-[200px] md:w-full md:max-w-[300px] h-auto"
+                priority
+              />
+            </div>
           </div>
           <div className="md:w-1/2">
             <CardHeader>
-              {/* Optional title inside card */}
             </CardHeader>
             <CardContent className="space-y-6 p-6 md:p-8">
-              <DetailItem icon={<CalendarDays size={28} />} label="Date & Time" value="Saturday, October 25, 2025 at 4:00 PM" />
-              <DetailItem icon={<MapPin size={28} />} label="Location" value="Club Gema, Willow Creek" />
-              <DetailItem icon={<Users size={28} />} label="Guests Allowed" value="Two (2) per invitation" />
-              <DetailItem icon={<GlassWater size={28} />} label="Dress Code" value="Formal Attire, Garden Party Chic" />
-              <DetailItem icon={<Info size={28} />} label="Important Note" value="Kindly note, this will be an adults-only celebration. We appreciate your understanding." />
+              <DetailItem icon={<CalendarDays size={28} />} label="Fecha y Hora" value="Sábado, 25 de Octubre de 2025 a las 12:00 PM" />
+              <DetailItem icon={<MapPin size={28} />} label="Ubicación" value="Club de Tiro, Casa Grande" />
+              <DetailItem icon={<Users size={28} />} label="Invitados Permitidos" value="Dos (2) por invitación" />
+              <DetailItem icon={<GlassWater size={28} />} label="Código de Vestimenta" value="Vestimenta Formal" />
+              <DetailItem icon={<Info size={28} />} label="Nota Importante" value="Por favor tomar en cuenta que esta será una celebración solo para adultos. Agradecemos su comprensión." />
             </CardContent>
           </div>
         </div>

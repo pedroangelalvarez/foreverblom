@@ -22,14 +22,14 @@ export function InvitationClientPage() {
   useEffect(() => {
     const token = searchParams.get("id");
     if (!token) {
-      setError("The invitation link is broken or invalid. Please contact the couple.");
+      setError("El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja.");
       setLoading(false);
       return;
     }
 
     const data = decodeAndVerifyJwt(token);
     if (!data) {
-      setError("The invitation link is broken or invalid. Please contact the couple.");
+      setError("El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja.");
       setLoading(false);
       return;
     }
@@ -58,18 +58,9 @@ export function InvitationClientPage() {
   // "Include a footer section with a thank-you message and a simple form for the guest to confirm or decline attendance." This is RsvpForm + PageFooter
   
   return (
-    <main className="container mx-auto px-4 py-12 flex flex-col items-center text-center font-sans relative">
-        <Image 
-            src="https://placehold.co/1200x500.png" 
-            alt="Floral Wedding Arch" 
-            width={1200} 
-            height={500} 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-5xl h-auto object-contain opacity-30 z-0 rounded-b-full"
-            data-ai-hint="elegant white floral arch watercolor"
-            priority
-        />
+    <main className="container mx-auto px-4 py-12 flex flex-col items-center text-center font-sans relative">  
       <div className="relative z-10 w-full max-w-3xl bg-background/80 backdrop-blur-sm p-6 sm:p-8 md:p-12 rounded-xl shadow-2xl mt-10 md:mt-20">
-        <WelcomeHeader firstName={guestData.firstName} lastName={guestData.lastName} />
+        <WelcomeHeader firstName={guestData.firstName} lastName={guestData.lastName} genre={guestData.genre} />
         <WeddingInfo />
         <RsvpCallToAction guestData={guestData} />
         <RsvpForm guestData={guestData} />

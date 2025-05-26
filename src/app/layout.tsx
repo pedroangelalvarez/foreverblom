@@ -12,8 +12,8 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: 'Forever Bloom - Wedding Invitation',
-  description: 'You are invited to celebrate with us!',
+  title: 'Forever Bloom - Invitación de Boda',
+  description: '¡Estás invitado a celebrar con nosotros!'
 };
 
 export default function RootLayout({
@@ -26,6 +26,16 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} ${dancingScript.variable} antialiased`}
       >
+        <video 
+          className="videoFondo" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+        > 
+          <source src="/Wedding.mp4" type="video/mp4" /> 
+          Tu navegador no soporta el video. 
+        </video>
         {children}
         <Toaster />
       </body>
