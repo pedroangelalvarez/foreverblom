@@ -9,7 +9,7 @@
 }
 
 .invitation {
-  min-width: 500px;
+  min-width: 40vh;
   background: white;
   padding: 2rem;
   border-radius: 16px;
