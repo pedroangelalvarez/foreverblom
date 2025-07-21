@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./invitation.module.css";
 
-export function Home() {
+export function Home({ guestData }: { guestData: GuestData | null }) {
 
     return (
     <div className={styles.container}>
@@ -25,26 +25,17 @@ export function Home() {
           </div>
           <span>2025</span>
         </div>
-        <p className={`${styles.text} md:hidden`}>
+        <p className={`${styles.text} hidden md:block`}>
           Queremos que formes parte de nuestra
         </p>
-        <p className={`${styles.text} md:hidden`}>
+        <p className={`${styles.text} hidden md:block`}>
           vida juntos y te esperamos en la
         </p>
-        <p className={`${styles.text} md:hidden`}>
-          Iglesia
-        </p>
-        <p className={`${styles.text} md:hidden`}>
-          <strong>"San Lorenzo"</strong> a las <strong>10:00 AM</strong>
+        <p className={`${styles.text} hidden md:block`}>
+          Iglesia <strong>"San Lorenzo"</strong> a las <strong>10:00 AM</strong>
         </p>
         <p className={`${styles.text} hidden md:block`}>
-          Queremos que formes parte de nuestra vida juntos
-        </p>
-        <p className={`${styles.text} hidden md:block`}>
-          y te esperamos en la Iglesia
-        </p>
-        <p className={`${styles.text} hidden md:block`}>
-          <strong>"San Lorenzo"</strong> a las <strong>10:00 AM</strong>
+          <strong>Familia:</strong> {guestData?.family || ''} ({guestData?.quantity || ''} personas)
         </p>
         <a href="https://wa.me/51962025233?text=Confirmo%20mi%20asistencia%20a%20la%20boda" target="_blank" rel="noopener noreferrer" className={styles.confirm}>
           <svg width="16" height="16" viewBox="0 0 15 30" fill="none" stroke="currentColor" strokeWidth="2" className="inline mr-2">

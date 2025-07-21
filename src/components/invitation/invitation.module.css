@@ -1,5 +1,5 @@
 .container {
-  min-height: 90vh;
+  min-height: 50vh;
   background-color: rgba(253, 252, 249, 0.6);
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 .invitation {
-  max-width: 500px;
+  min-width: 500px;
   background: white;
   padding: 2rem;
   border-radius: 16px;
@@ -87,7 +87,7 @@
 
 .confirm {
   font-size: 0.9rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   color: #50624c;
   display: block;
   text-align: right;
@@ -118,4 +118,10 @@
 .confirm,
 .date {
   font-family: 'Raleway';
+}
+
+@media (min-width: 768px) {
+  .invitation {
+    max-width: 1000px;
+  }
 }

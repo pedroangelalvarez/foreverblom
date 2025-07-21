@@ -16,44 +16,9 @@ import Head from 'next/head';
 
 import Image from "next/image";
 
-export function InvitationClientPage() {
-  const searchParams = useSearchParams();
-  const [guestData, setGuestData] = useState<GuestData | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const token = searchParams.get("id");
-    if (!token) {
-      setError("El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja.");
-      setLoading(false);
-      return;
-    }
-
-    const data = decodeAndVerifyJwt(token);
-    if (!data) {
-      setError("El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja.");
-      setLoading(false);
-      return;
-    }
-    
-    setGuestData(data);
-    setLoading(false);
-  }, [searchParams]);
-
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 space-y-6">
-        <Skeleton className="h-12 w-3/4 rounded-md" />
-        <Skeleton className="h-8 w-1/2 rounded-md" />
-        <Skeleton className="h-64 w-full max-w-2xl rounded-lg" />
-        <Skeleton className="h-48 w-full max-w-md rounded-lg" />
-      </div>
-    );
-  }
-
-  if (error || !guestData) {
-    return <ErrorDisplay message={error || "An unknown error occurred."} />;
+export function InvitationClientPage({ guestData }: { guestData: GuestData | null }) {
+  if (!guestData) {
+    return <ErrorDisplay message="El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja." />;
   }
   
   // The prompt: "If the JWT is valid, it includes the guest’s first name, last name, confirmation (boolean), and expirationDate (ISO format)."
@@ -64,12 +29,12 @@ export function InvitationClientPage() {
     <main className="container mx-auto px-4 py-4 flex flex-col items-center text-center font-sans relative">  
       <div className="relative z-10 w-full max-w-3xl bg-background/50 backdrop-blur-sm p-1 sm:p-2 md:p-4 rounded-xl shadow-2xl mt-1 md:mt-2">
         <Head>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@300;500&display=swap"
-    rel="stylesheet"
-  />
-</Head>
-        <Home />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@300;500&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <Home guestData={guestData} />
       </div>
     </main>
   );
