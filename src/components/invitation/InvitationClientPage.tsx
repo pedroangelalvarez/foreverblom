@@ -11,6 +11,9 @@ import { RsvpForm } from "./RsvpForm";
 import { PageFooter } from "./PageFooter";
 import { RsvpCallToAction } from "./RsvpCallToAction";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Home } from "./Home";
+import Head from 'next/head';
+
 import Image from "next/image";
 
 export function InvitationClientPage() {
@@ -58,13 +61,15 @@ export function InvitationClientPage() {
   // "Include a footer section with a thank-you message and a simple form for the guest to confirm or decline attendance." This is RsvpForm + PageFooter
   
   return (
-    <main className="container mx-auto px-4 py-12 flex flex-col items-center text-center font-sans relative">  
-      <div className="relative z-10 w-full max-w-3xl bg-background/80 backdrop-blur-sm p-6 sm:p-8 md:p-12 rounded-xl shadow-2xl mt-10 md:mt-20">
-        <WelcomeHeader firstName={guestData.firstName} lastName={guestData.lastName} genre={guestData.genre} />
-        <WeddingInfo />
-        <RsvpCallToAction guestData={guestData} />
-        <RsvpForm guestData={guestData} />
-        <PageFooter />
+    <main className="container mx-auto px-4 py-4 flex flex-col items-center text-center font-sans relative">  
+      <div className="relative z-10 w-full max-w-3xl bg-background/50 backdrop-blur-sm p-1 sm:p-2 md:p-4 rounded-xl shadow-2xl mt-1 md:mt-2">
+        <Head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@300;500&display=swap"
+    rel="stylesheet"
+  />
+</Head>
+        <Home />
       </div>
     </main>
   );
