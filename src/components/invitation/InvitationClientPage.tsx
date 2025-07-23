@@ -11,8 +11,9 @@ import { RsvpForm } from "./RsvpForm";
 import { PageFooter } from "./PageFooter";
 import { RsvpCallToAction } from "./RsvpCallToAction";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Home } from "./Home";
 import Head from 'next/head';
+//import { Home } from "./Home";
+import Invitation from "./Invitation";
 
 import Image from "next/image";
 
@@ -28,13 +29,7 @@ export function InvitationClientPage({ guestData }: { guestData: GuestData | nul
   return (
     <main className="container mx-auto px-4 py-4 flex flex-col items-center text-center font-sans relative">  
       <div className="relative z-10 w-full max-w-3xl bg-background/50 backdrop-blur-sm p-1 sm:p-2 md:p-4 rounded-xl shadow-2xl mt-1 md:mt-2">
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@300;500&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-        <Home guestData={guestData} />
+        <Invitation />
       </div>
     </main>
   );
