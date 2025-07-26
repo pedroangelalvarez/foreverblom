@@ -29,7 +29,7 @@ export function InvitationClientPage({ guestData }: { guestData: GuestData | nul
   return (
     <main className="container mx-auto px-4 py-4 flex flex-col items-center text-center font-sans relative">  
       <div className="relative z-10 w-full max-w-3xl bg-background/50 backdrop-blur-sm p-1 sm:p-2 md:p-4 rounded-xl shadow-2xl mt-1 md:mt-2">
-        <Invitation />
+        <Invitation guestData={guestData} />
       </div>
     </main>
   );

@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh;
+  min-height: 110vh;
   background-color: #fdfcf9;
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@
 
 .card {
   background: white;
-  padding: 3rem 2rem;
+  padding: 8rem 2rem;
   max-width: 600px;
   text-align: center;
   position: relative;
@@ -73,10 +73,12 @@
 }
 
 .month {
-  font-size: 1rem;
-  margin: 0.5rem 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway';
 }
 
 .address {
@@ -97,9 +99,9 @@
 }
 
 .topDecoration {
-  top: -20px;
+  top: -10px;
 }
 
 .bottomDecoration {
-  bottom: -20px;
+  bottom: -10px;
 }
