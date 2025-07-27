@@ -9,8 +9,13 @@ import { Camera } from "lucide-react";
 
 export default function Invitation({ guestData }: { guestData: GuestData | null }) {
   const captureRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleDownload = async () => {
+    const button = buttonRef.current;
+    if (button) {
+      button.style.display = 'none';
+    }
     if (captureRef.current) {
       const canvas = await html2canvas(captureRef.current);
       const image = canvas.toDataURL('image/png');
@@ -20,6 +25,9 @@ export default function Invitation({ guestData }: { guestData: GuestData | null 
       link.href = image;
       link.download = 'captura.png';
       link.click();
+    }
+    if (button) {
+      button.style.display = '';
     }
   };
 
@@ -57,14 +65,15 @@ export default function Invitation({ guestData }: { guestData: GuestData | null 
             JR. COLÓN N°744, ESQUINA CON JR. AYACUCHO, EN EL CENTRO HISTÓRICO DE TRUJILLO
           </p>
 
-          <p className={`${styles.text} hidden md:block`}>
+          <p className={`${styles.church} ${styles.family}`}>
             <strong>Familia:</strong> {guestData?.family || ''} ({guestData?.quantity || ''} personas)
           </p>
         <button
+          ref={buttonRef}
           onClick={handleDownload}
-          className="mt-4 flex items-center gap-2 px-4 py-2 bg-[#444] text-white rounded-md mx-auto"
+          className="mt-4 flex items-center gap-2 px-4 py-2 bg-white/20 text-white rounded-full mx-auto backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 [text-shadow:_0_1px_1px_rgba(0,0,0,0.5)]"
         >
-          <Camera className="h-5 w-5" />
+          <Camera className="h-5 w-5 drop-shadow-md" />
           Descargar Invitacion
         </button>
           <img src="/flowers-bottom.png" alt="" className={styles.bottomDecoration} />

@@ -3,4 +3,6 @@ export interface GuestData {
   lastName: string;
   confirmation: boolean;
   expirationDate: string; // ISO date string
+  family: string;
+  quantity: number;
 }
