@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'TTBerlinerins';
+  src: url('/fonts/TTBerlinerinsTrialScript.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
   min-height: 110vh;
   background-color: #fdfcf9;
@@ -8,7 +15,9 @@
 }
 
 .card {
-  background: white;
+  background-image: url('/fondo.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 6rem 2rem;
   max-width: 600px;
   text-align: center;
@@ -18,8 +27,8 @@
 }
 
 .names {
-  font-family: 'Dancing Script', cursive;
-  font-size: 3rem;
+  font-family: 'TTBerlinerins', sans-serif;
+  font-size: 3.5rem;
   margin: 2rem 0 1rem;
   color: #222;
   line-height: 1.2;
@@ -90,7 +99,7 @@
 .address {
   font-size: 0.8rem;
   color: #333;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway';
   line-height: 1.4;
 }
 
