@@ -20,7 +20,7 @@ export default async function Home({ searchParams: searchParamsPromise }: { sear
   const id = searchParams.id;
 
   if (!id) {
-    return <ErrorDisplay message="No se proporcionó un ID válido." />;
+    return <ErrorDisplay message="El enlace de invitación está roto o no es válido. Por favor, contacta a la pareja." />;
   }
 
   try {

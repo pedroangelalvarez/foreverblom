@@ -1,5 +1,6 @@
-import { NextResponse, NextRequest } from 'next/server'
 import { CosmosClient } from '@azure/cosmos'
+ import { NextRequest, NextResponse } from 'next/server';
+ import { Buffer } from 'buffer';
 
 const endpoint = process.env.COSMOS_DB_ENDPOINT!
 const key = process.env.COSMOS_DB_KEY!
@@ -9,10 +10,20 @@ const containerId = 'guests'
 const client = new CosmosClient({ endpoint, key })
 
 export async function GET(request: NextRequest) {
-  const id = request.nextUrl.searchParams.get('id')
+  let id = request.nextUrl.searchParams.get('id')
 
   if (!id) {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })
+  }
+
+  // Decodificar el ID si su longitud es mayor a 1 (asumiendo que es base64)
+  if (id.length > 1) {
+    try {
+      id = Buffer.from(id, 'base64').toString('utf8');
+    } catch (e) {
+      console.error('Error decoding ID:', e);
+      return NextResponse.json({ error: 'Invalid ID format' }, { status: 400 });
+    }
   }
 
   try {

@@ -59,8 +59,13 @@ export default function Invitation({ guestData }: { guestData: GuestData | null 
             ESTAMOS ENCANTADOS DE INVITARTE A LA CELEBRACIÓN DE NUESTRO MATRIMONIO
           </p>
 
-          <p className={styles.church}>IGLESIA "SAN LORENZO"</p>
-
+          <p className={styles.church}>MATRIMONIO RELIGIOSO</p>
+          <p className={styles.address}>
+            <MapPin className="inline-block mr-2 h-5 w-5" />
+            <a href="https://maps.app.goo.gl/8ofWcuVJN6DUyGtW8" target="_blank" rel="noopener noreferrer">
+              IGLESIA "SAN LORENZO" - JR. COLÓN N°744, ESQUINA CON JR. AYACUCHO, EN EL CENTRO HISTÓRICO DE TRUJILLO
+            </a>
+          </p>
           <div className={styles.dateRow}>
             <span className={styles.label}>SÁBADO</span>
             <span className={styles.day}>09</span>
@@ -70,17 +75,32 @@ export default function Invitation({ guestData }: { guestData: GuestData | null 
           <p className={styles.month}>DE AGOSTO DE 2025</p>
 
           <p className={styles.address}>
+            <span className={styles.eventTitle}>MATRIMONIO CIVIL</span>
+            <br />
             <MapPin className="inline-block mr-2 h-5 w-5" />
-            JR. COLÓN N°744, ESQUINA CON JR. AYACUCHO, EN EL CENTRO HISTÓRICO DE TRUJILLO
+            <a href="https://maps.app.goo.gl/PE7oEsHQaML3QU3V7" target="_blank" rel="noopener noreferrer">
+              Salón Consistorial, Jr. Diego de Almagro 525, Trujillo
+            </a>
+            <br />
+            A las 12:00 p.m.  
           </p>
-
+          
           <p className={styles.address}>
+            <span className={styles.eventTitle}>Posteriormente acompáñenos a la recepción en:</span>
             <Utensils className="inline-block mr-2 h-5 w-5" />
-            Recepción: AV. LARCO 834
+            <a href="https://maps.app.goo.gl/mRshkzb7NxgACqRe9" target="_blank" rel="noopener noreferrer">
+              El Parrillón de Larco - Av. Larco 834, Trujillo
+            </a>
           </p>
 
           <p className={`${styles.church} ${styles.family}`}>
-            <strong>Familia:</strong> {guestData?.family || ''} ({guestData?.quantity || ''} personas)
+            {guestData?.family?.split(' ').length === 3 ? (
+              `Invitado: ${guestData.family}`
+            ) : (
+              <>
+                <strong>Familia:</strong> {guestData?.family || ''} ({guestData?.quantity || ''} personas)
+              </>
+            )}
           </p>
         <button
           ref={buttonRef}
