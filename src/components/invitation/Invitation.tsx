@@ -75,7 +75,7 @@ export default function Invitation({ guestData }: { guestData: GuestData | null 
           <p className={styles.month}>DE AGOSTO DE 2025</p>
 
           <p className={styles.address}>
-            <span className={styles.eventTitle}>MATRIMONIO CIVIL</span>
+            <span className={styles.church}>MATRIMONIO CIVIL</span>
             <br />
             <MapPin className="inline-block mr-2 h-5 w-5" />
             <a href="https://maps.app.goo.gl/PE7oEsHQaML3QU3V7" target="_blank" rel="noopener noreferrer">
